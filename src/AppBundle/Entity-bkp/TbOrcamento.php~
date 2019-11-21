@@ -1,0 +1,57 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbOrcamento
+ *
+ * @ORM\Table(name="tb_orcamento", indexes={@ORM\Index(name="fk_tb_orcamento_tb_unidade1_idx", columns={"tb_unidade_id"})})
+ * @ORM\Entity
+ */
+class TbOrcamento
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="total_custeio", type="decimal", precision=19, scale=4, nullable=true)
+     */
+    private $totalCusteio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="total_investimento", type="decimal", precision=19, scale=4, nullable=true)
+     */
+    private $totalInvestimento;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="total_diarias_passagens", type="decimal", precision=19, scale=4, nullable=true)
+     */
+    private $totalDiariasPassagens;
+
+    /**
+     * @var \TbUnidade
+     *
+     * @ORM\ManyToOne(targetEntity="TbUnidade")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tb_unidade_id", referencedColumnName="id")
+     * })
+     */
+    private $tbUnidade;
+
+
+}
+

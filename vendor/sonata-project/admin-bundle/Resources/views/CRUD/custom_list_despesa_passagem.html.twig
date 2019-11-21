@@ -1,0 +1,10 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+	
+
+	<i class="fa fa-minus-circle danger" aria-hidden="true"></i> R$ {{ object.valorDespesa|number_format(2, ',', '.') }} <br>
+	
+    </div>
+{% endblock %}

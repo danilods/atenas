@@ -1,0 +1,60 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbDiariasControle
+ *
+ * @ORM\Table(name="tb_diarias_controle", indexes={@ORM\Index(name="fk_tb_diarias_controle_tb_usuario1_idx", columns={"tb_usuario_id"}), @ORM\Index(name="fk_tb_diarias_controle_tb_ordem_servico1_idx", columns={"tb_ordem_servico_id"})})
+ * @ORM\Entity
+ */
+class TbDiariasControle
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantidade", type="integer", nullable=true)
+     */
+    private $quantidade;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="date", nullable=true)
+     */
+    private $data;
+
+    /**
+     * @var \TbOrdemServico
+     *
+     * @ORM\ManyToOne(targetEntity="TbOrdemServico")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tb_ordem_servico_id", referencedColumnName="id")
+     * })
+     */
+    private $tbOrdemServico;
+
+    /**
+     * @var \TbUsuario
+     *
+     * @ORM\ManyToOne(targetEntity="TbUsuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tb_usuario_id", referencedColumnName="id")
+     * })
+     */
+    private $tbUsuario;
+
+
+}
+

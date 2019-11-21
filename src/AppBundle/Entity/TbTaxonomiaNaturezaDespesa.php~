@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbTaxonomiaNaturezaDespesa
+ *
+ * @ORM\Table(name="tb_taxonomia_natureza_despesa")
+ * @ORM\Entity
+ */
+class TbTaxonomiaNaturezaDespesa
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo_natureza", type="string", length=45, nullable=true)
+     */
+    private $tipoNatureza;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descricao_natureza", type="string", length=45, nullable=true)
+     */
+    private $descricaoNatureza;
+
+
+}
+

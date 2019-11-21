@@ -1,0 +1,154 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbProcesso
+ *
+ * @ORM\Table(name="tb_processo", indexes={@ORM\Index(name="fk_tb_rims_tb_efetivo1_idx", columns={"requisitante_id"}), @ORM\Index(name="fk_tb_rims_tb_efetivo2_idx", columns={"responsavel_id"}), @ORM\Index(name="fk_tb_processo_tb_destinatario_processo1_idx", columns={"destinatario_processo_id"})})
+ * @ORM\Entity
+ */
+class TbProcesso
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero_requisicao", type="string", length=45, nullable=true)
+     */
+    private $numeroRequisicao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero_processo", type="string", length=45, nullable=true)
+     */
+    private $numeroProcesso;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="data", type="string", length=45, nullable=true)
+     */
+    private $data;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="justificativa_requisicao", type="string", length=45, nullable=true)
+     */
+    private $justificativaRequisicao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="beneficio_direto", type="string", length=45, nullable=true)
+     */
+    private $beneficioDireto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="beneficio_indireto", type="string", length=45, nullable=true)
+     */
+    private $beneficioIndireto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="conexao_planejamento", type="string", length=45, nullable=true)
+     */
+    private $conexaoPlanejamento;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="objetivo_contratacao", type="string", length=45, nullable=true)
+     */
+    private $objetivoContratacao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prazo_execucao", type="string", length=45, nullable=true)
+     */
+    private $prazoExecucao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observacoes", type="text", length=65535, nullable=true)
+     */
+    private $observacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="obrigacoes_contrata", type="text", length=65535, nullable=true)
+     */
+    private $obrigacoesContrata;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="staus_processo", type="string", length=45, nullable=true)
+     */
+    private $stausProcesso;
+
+    /**
+     * @var \TbDestinatarioProcesso
+     *
+     * @ORM\ManyToOne(targetEntity="TbDestinatarioProcesso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="destinatario_processo_id", referencedColumnName="id")
+     * })
+     */
+    private $destinatarioProcesso;
+
+    /**
+     * @var \TbUsuario
+     *
+     * @ORM\ManyToOne(targetEntity="TbUsuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="requisitante_id", referencedColumnName="id")
+     * })
+     */
+    private $requisitante;
+
+    /**
+     * @var \TbUsuario
+     *
+     * @ORM\ManyToOne(targetEntity="TbUsuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="responsavel_id", referencedColumnName="id")
+     * })
+     */
+    private $responsavel;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="TbNaturezaDespesa", mappedBy="processo")
+     */
+    private $naturezaDespesa;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->naturezaDespesa = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

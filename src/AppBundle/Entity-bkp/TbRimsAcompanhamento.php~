@@ -1,0 +1,67 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbRimsAcompanhamento
+ *
+ * @ORM\Table(name="tb_rims_acompanhamento", indexes={@ORM\Index(name="fk_tb_rims_acompanhamento_tb_usuario1_idx", columns={"tb_usuario_id"}), @ORM\Index(name="fk_tb_rims_acompanhamento_tb_processo1_idx", columns={"tb_processo_id"})})
+ * @ORM\Entity
+ */
+class TbRimsAcompanhamento
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="data_", type="string", length=45, nullable=true)
+     */
+    private $data;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descricao", type="string", length=45, nullable=true)
+     */
+    private $descricao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="anexo_rims", type="string", length=45, nullable=true)
+     */
+    private $anexoRims;
+
+    /**
+     * @var \TbProcesso
+     *
+     * @ORM\ManyToOne(targetEntity="TbProcesso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tb_processo_id", referencedColumnName="id")
+     * })
+     */
+    private $tbProcesso;
+
+    /**
+     * @var \TbUsuario
+     *
+     * @ORM\ManyToOne(targetEntity="TbUsuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tb_usuario_id", referencedColumnName="id")
+     * })
+     */
+    private $tbUsuario;
+
+
+}
+

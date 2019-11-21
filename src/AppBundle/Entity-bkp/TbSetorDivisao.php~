@@ -1,0 +1,71 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbSetorDivisao
+ *
+ * @ORM\Table(name="tb_setor_divisao", indexes={@ORM\Index(name="fk_setor_divisao_tb_divisao1_idx", columns={"tb_divisao_id"})})
+ * @ORM\Entity
+ */
+class TbSetorDivisao
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome_setor", type="string", length=45, nullable=true)
+     */
+    private $nomeSetor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sigla", type="string", length=45, nullable=true)
+     */
+    private $sigla;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     */
+    private $deletedAt;
+
+    /**
+     * @var \TbDivisao
+     *
+     * @ORM\ManyToOne(targetEntity="TbDivisao")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tb_divisao_id", referencedColumnName="id")
+     * })
+     */
+    private $tbDivisao;
+
+
+}
+

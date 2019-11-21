@@ -1,0 +1,235 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbNaturezaDespesaDescentralizacaoUnidade
+ *
+ * @ORM\Table(name="tb_natureza_despesa_descentralizacao_unidade", indexes={@ORM\Index(name="fk_tb_natureza_despesa_has_tb_unidade_tb_unidade2_idx", columns={"unidade_destino_id"}), @ORM\Index(name="fk_tb_natureza_despesa_descentralizacao_unidade_tb_natureza_idx", columns={"tb_natureza_despesa_id"}), @ORM\Index(name="fk_tb_natureza_despesa_descentralizacao_unidade_tb_unidade1_idx", columns={"tb_unidade_id"})})
+ * @ORM\Entity
+ */
+class TbNaturezaDespesaDescentralizacaoUnidade
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valor_descentralizado", type="decimal", precision=19, scale=4, nullable=true)
+     */
+    private $valorDescentralizado;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_registro", type="datetime", nullable=true)
+     */
+    private $dataRegistro;
+
+    /**
+     * @var \TbTaxonomiaNaturezaDespesa
+     *
+     * @ORM\ManyToOne(targetEntity="TbTaxonomiaNaturezaDespesa")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tb_natureza_despesa_id", referencedColumnName="id")
+     * })
+     */
+    private $tbNaturezaDespesa;
+
+    /**
+     * @var \TbTaxonomiaNaturezaDespesa
+     *
+     * @ORM\ManyToOne(targetEntity="TbTaxonomiaNaturezaDespesa")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tb_natureza_despesa_destino_id", referencedColumnName="id")
+     * })
+     */
+    private $naturezaDespesaDestino;
+
+    /**
+     * @var \TbUnidade
+     *
+     * @ORM\ManyToOne(targetEntity="TbUnidade")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tb_unidade_id", referencedColumnName="id")
+     * })
+     */
+    private $tbUnidade;
+
+    /**
+     * @var \TbUnidade
+     *
+     * @ORM\ManyToOne(targetEntity="TbUnidade")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="unidade_destino_id", referencedColumnName="id")
+     * })
+     */
+    private $unidadeDestino;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set valorDescentralizado
+     *
+     * @param string $valorDescentralizado
+     *
+     * @return TbNaturezaDespesaDescentralizacaoUnidade
+     */
+    public function setValorDescentralizado($valorDescentralizado)
+    {
+        $this->valorDescentralizado = $valorDescentralizado;
+
+        return $this;
+    }
+
+    /**
+     * Get valorDescentralizado
+     *
+     * @return string
+     */
+    public function getValorDescentralizado()
+    {
+        return $this->valorDescentralizado;
+    }
+
+    /**
+     * Set dataRegistro
+     *
+     * @param \DateTime $dataRegistro
+     *
+     * @return TbNaturezaDespesaDescentralizacaoUnidade
+     */
+    public function setDataRegistro($dataRegistro)
+    {
+        $this->dataRegistro = $dataRegistro;
+
+        return $this;
+    }
+
+    /**
+     * Get dataRegistro
+     *
+     * @return \DateTime
+     */
+    public function getDataRegistro()
+    {
+        return $this->dataRegistro;
+    }
+
+    /**
+     * Set tbNaturezaDespesa
+     *
+     * @param \AppBundle\Entity\TbNaturezaDespesa $tbNaturezaDespesa
+     *
+     * @return TbNaturezaDespesaDescentralizacaoUnidade
+     */
+    public function setTbNaturezaDespesa(\AppBundle\Entity\TbNaturezaDespesa $tbNaturezaDespesa = null)
+    {
+        $this->tbNaturezaDespesa = $tbNaturezaDespesa;
+
+        return $this;
+    }
+
+    /**
+     * Get tbNaturezaDespesa
+     *
+     * @return \AppBundle\Entity\TbNaturezaDespesa
+     */
+    public function getTbNaturezaDespesa()
+    {
+        return $this->tbNaturezaDespesa;
+    }
+
+    /**
+     * Set tbUnidade
+     *
+     * @param \AppBundle\Entity\TbUnidade $tbUnidade
+     *
+     * @return TbNaturezaDespesaDescentralizacaoUnidade
+     */
+    public function setTbUnidade(\AppBundle\Entity\TbUnidade $tbUnidade = null)
+    {
+        $this->tbUnidade = $tbUnidade;
+
+        return $this;
+    }
+
+    /**
+     * Get tbUnidade
+     *
+     * @return \AppBundle\Entity\TbUnidade
+     */
+    public function getTbUnidade()
+    {
+        return $this->tbUnidade;
+    }
+
+    /**
+     * Set unidadeDestino
+     *
+     * @param \AppBundle\Entity\TbUnidade $unidadeDestino
+     *
+     * @return TbNaturezaDespesaDescentralizacaoUnidade
+     */
+    public function setUnidadeDestino(\AppBundle\Entity\TbUnidade $unidadeDestino = null)
+    {
+        $this->unidadeDestino = $unidadeDestino;
+
+        return $this;
+    }
+
+    /**
+     * Get unidadeDestino
+     *
+     * @return \AppBundle\Entity\TbUnidade
+     */
+    public function getUnidadeDestino()
+    {
+        return $this->unidadeDestino;
+    }
+
+
+
+    /**
+     * Set naturezaDespesaDestino
+     *
+     * @param integer $naturezaDespesaDestino
+     *
+     * @return TbNaturezaDespesaDescentralizacaoUnidade
+     */
+    public function setNaturezaDespesaDestino($naturezaDespesaDestino)
+    {
+        $this->naturezaDespesaDestino = $naturezaDespesaDestino;
+
+        return $this;
+    }
+
+    /**
+     * Get naturezaDespesaDestino
+     *
+     * @return integer
+     */
+    public function getNaturezaDespesaDestino()
+    {
+        return $this->naturezaDespesaDestino;
+    }
+}

@@ -1,0 +1,36 @@
+{% if leftDays == 20 %}
+								
+									<i class="fa fa-check-circle" aria-hidden="true"></i>
+										<span class="label label-warning">
+										
+										Prazo expira em {{leftDays}} dias.
+										
+										</span>
+								
+								{% elseif leftDays == 10 %}
+								
+									<i class="fa fa-check-circle" aria-hidden="true"></i>
+										<span class="label label-danger">
+										
+										Prazo expira em {{leftDays}} dias.
+										
+										</span>
+								
+								{% elseif leftDays == 5 %}
+								
+									<i class="fa fa-check-circle" aria-hidden="true"></i>
+										<span class="label label-danger">
+										
+										Prazo expira em {{leftDays}} dias.
+										
+										</span>
+								
+								{% elseif leftDays == 1 %}
+								
+									<i class="fa fa-check-circle" aria-hidden="true"></i>
+										<span class="label label-danger">
+										
+										Prazo expira em 1 dia.
+										
+										</span>
+								{%endif%}

@@ -1,0 +1,102 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * GeografiaCidade
+ *
+ * @ORM\Table(name="geografia_cidade", indexes={@ORM\Index(name="fk_geografia_cidade_geografia_uf1_idx", columns={"uf_id"}), @ORM\Index(name="fk_geografia_cidade_geografia_pais1_idx", columns={"pais_id"})})
+ * @ORM\Entity
+ */
+class GeografiaCidade
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=45, nullable=true)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="latitude", type="string", length=45, nullable=true)
+     */
+    private $latitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude", type="string", length=45, nullable=true)
+     */
+    private $longitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="altitude", type="string", length=45, nullable=true)
+     */
+    private $altitude;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     */
+    private $deletedAt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="diaria", type="integer", nullable=true)
+     */
+    private $diaria;
+
+    /**
+     * @var \GeografiaPais
+     *
+     * @ORM\ManyToOne(targetEntity="GeografiaPais")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pais_id", referencedColumnName="id")
+     * })
+     */
+    private $pais;
+
+    /**
+     * @var \GeografiaUf
+     *
+     * @ORM\ManyToOne(targetEntity="GeografiaUf")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="uf_id", referencedColumnName="id")
+     * })
+     */
+    private $uf;
+
+
+}
+

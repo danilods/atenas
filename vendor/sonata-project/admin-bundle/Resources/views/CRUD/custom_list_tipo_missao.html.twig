@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+	
+	<i class="fa fa-briefcase" aria-hidden="true"></i> {{object.naturezaMissao }}<br>
+
+        <i class="fa fa-commenting-o" aria-hidden="true"></i>  {{ object.descricaoMissao }}
+	
+    </div>
+{% endblock %}

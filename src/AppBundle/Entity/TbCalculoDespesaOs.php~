@@ -1,0 +1,88 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbCalculoDespesaOs
+ *
+ * @ORM\Table(name="tb_calculo_despesa_os", indexes={@ORM\Index(name="fk_tb_calculo_despesa_os_tb_natureza_despesa1_idx", columns={"tb_natureza_despesa_id"}), @ORM\Index(name="fk_tb_calculo_despesa_os_tb_ordem_servico1_idx", columns={"tb_ordem_servico_id"})})
+ * @ORM\Entity
+ */
+class TbCalculoDespesaOs
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="natureza_despesa", type="string", length=100, nullable=true)
+     */
+    private $naturezaDespesa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="total_depesa_missao", type="decimal", precision=7, scale=2, nullable=true)
+     */
+    private $totalDepesaMissao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="exercicio", type="string", length=10, nullable=true)
+     */
+    private $exercicio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valor_natureza_despesa", type="decimal", precision=7, scale=2, nullable=true)
+     */
+    private $valorNaturezaDespesa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="saldo_natureza", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $saldoNatureza;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="natureza_missao", type="integer", nullable=true)
+     */
+    private $naturezaMissao;
+
+    /**
+     * @var \TbNaturezaDespesa
+     *
+     * @ORM\ManyToOne(targetEntity="TbNaturezaDespesa")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tb_natureza_despesa_id", referencedColumnName="id")
+     * })
+     */
+    private $tbNaturezaDespesa;
+
+    /**
+     * @var \TbOrdemServico
+     *
+     * @ORM\ManyToOne(targetEntity="TbOrdemServico")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tb_ordem_servico_id", referencedColumnName="id")
+     * })
+     */
+    private $tbOrdemServico;
+
+
+}
+

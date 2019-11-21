@@ -1,0 +1,1234 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends base_template %}
+{% block title %}{{ 'title_dashboard'|trans({}, 'SonataAdminBundle') }} {% endblock%}
+{% block breadcrumb %}{% endblock %}
+{% block content %}
+
+	
+    {{ sonata_block_render_event('sonata.admin.dashboard.top', { 'admin_pool': admin_pool }) }} 
+
+    {% if blocks.top|length > 0 %}
+        <div class="row">
+            {% for block in blocks.top %}
+                <div class="{{ block.class }}">
+                    {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+   
+		<div class="">
+        
+		<section class="content-header">
+
+        </section>
+
+                    
+		<section class="">
+                                             
+			<div class="sonata-ba-content">
+                                                                                                         
+            <div class="row">
+			
+						<div class="col-md-12 col-xs-12">
+						
+								<div class="small-box bg-blue">
+									
+									
+								</div>
+
+						
+						
+
+						</div>
+						
+    
+
+			
+						
+						
+
+						
+
+						
+						
+
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+
+						
+							<div class="inner">
+								
+								
+								<p align='justify'>Para acessar o painel resumido dos gastos com diárias e passagens, escolha uma das OMs abaixo: </p>
+								
+								
+								<div class="list-group">
+								  <a href="http://kibana.cenipa.intraer/app/canvas#/workpad/workpad-15343c10-6d2d-4274-9306-e07792e16804/page/1" target="_blank" class="list-group-item list-group-item-action active">
+									CENIPA
+								  </a>					  
+								  <a href="http://kibana.cenipa.intraer/app/canvas#/workpad/workpad-2b231c82-505c-41f3-a3c0-1762b702e6f5/page/1" target="_blank" class="list-group-item list-group-item-action">SERIPA I</a>
+					  
+								  <a href="http://kibana.cenipa.intraer/app/canvas#/workpad/workpad-a02bd6aa-3b31-4747-aa04-d338e8c61aa7/page/1" target="_blank" class="list-group-item list-group-item-action">SERIPA II</a>
+								  <a href="http://kibana.cenipa.intraer/app/canvas#/workpad/workpad-eab52ff2-ca4b-483e-ada8-c22289323dea/page/1" target="_blank" class="list-group-item list-group-item-action">SERIPA III</a>
+								  <a href="http://kibana.cenipa.intraer/app/canvas#/workpad/workpad-c81ca5fe-7ee0-4543-86e1-b40cf7b5eb83/page/1" target="_blank" class="list-group-item list-group-item-action">SERIPA IV</a>
+								  <a href="http://kibana.cenipa.intraer/app/canvas#/workpad/workpad-cc334c30-bccb-4dce-a4da-18086180a047/page/1" target="_blank" class="list-group-item list-group-item-action">SERIPA V</a>
+
+								  <a href="http://kibana.cenipa.intraer/app/canvas#/workpad/workpad-fb86ea75-e4bf-48c1-af17-5659e9f8836b/page/1" target="_blank" class="list-group-item list-group-item-action">SERIPA VI</a>
+																																								  <a href="				   http://kibana.cenipa.intraer/app/canvas#/workpad/workpad-adc5b76b-4a43-4c8f-8297-29a1d8a60560/page/1" target="_blank" class="list-group-item list-group-item-action ">SERIPA VII</a>
+																																								  
+																																								  <a href="http://os.cenipa.intraer/painel" target="_blank" class="list-group-item list-group-item-action ">Painel detalhado CENIPA e SERIPA</a>
+																																								  
+																																								  <a href="http://os.cenipa.intraer/exterior"  target="_blank" class="list-group-item list-group-item-action ">Cadastro de missões PLAMTAX e EXTRA-PLAMTAX</a>
+
+								</div>
+								
+								
+								
+								<p align='justify'>Senhor gestor, para que os cálculos estimem a realidade de gastos de cada OM, se faz necessário o processamento das Ordens de Serviço. Lembre-se que o sistema só realiza o cálculo orçamentário quando as Ordens de Serviço estiverem processadas e enviadas para pagamento.
+								
+								
+								</p>
+								
+							</div>
+							
+							
+						</div>
+
+						
+
+						
+				
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_DPG_EDIT') %}
+    
+
+			
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-blue">
+							<div class="inner">
+								<h3>{{ dpg }}</h3>
+
+								<p>Caixa de Entrada - DPG</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-dpg-cenipa/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+						
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_DOP_EDIT') %}
+
+						
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-blue">
+							<div class="inner">
+								<h3>{{ dop }}</h3>
+
+								<p>Caixa de Entrada - DOP</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-dop-cenipa/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+					
+						</div>
+						
+						{% endif %}
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_DFA_EDIT') %}
+
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-blue">
+							<div class="inner">
+								<h3>{{ dfa }}</h3>
+
+								<p>Caixa de Entrada - DFA</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-dfa-cenipa/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						{% endif %}
+						
+						
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_ORDENADOR_DESPESAS_EDIT') %}
+					
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-blue">
+							<div class="inner">
+								<h3>{{ chcenipa }}</h3>
+
+								<p>Caixa de Entrada - CH/VCH CENIPA</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-chefe-cenipa/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_GESTOR_PASSAGEM_CENIPA_EDIT') %}
+
+						<div class="col-md-2 col-xs-6">
+
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-blue">
+							<div class="inner">
+								<h3>{{ osAutCenipa }}</h3>
+
+								<p>O.S autorizadas - CENIPA</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-cenipa/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+
+
+						</div>
+						
+						{% endif %}
+						
+						
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_ORDENADOR_DESPESAS1_EDIT') %}
+						
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-green">
+							<div class="inner">
+								<h3>{{ seripa1 }}</h3>
+
+								<p>Solicitações - SERIPA1</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page1-chefe-cenipa/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_GESTOR_PASSAGEM_CENIPA1_EDIT') %}
+
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-green">
+							<div class="inner">
+								<h3>{{ osAutSeripa1 }}</h3>
+
+								<p>Emissão de passagens - SERIPA1</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-cenipa-seripa1/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SEC_SERIPA1_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-green">
+							<div class="inner">
+								<h3>{{ caixaSeripa1 }}</h3>
+
+								<p>Caixa de Entrada - SERIPA1</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-seripa1/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+						
+						</div>
+
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-green">
+							<div class="inner">
+								<h3>{{ acompanhamentoSeripa1 }}</h3>
+
+								<p>Acompanhamento - SERIPA1</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-acompanhamento-seripa1/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+
+						
+						
+						{% endif %}
+						
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_ORDENADOR_DESPESAS2_EDIT') %}
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-orange">
+							<div class="inner">
+								<h3>{{ seripa2 }}</h3>
+
+								<p>Solicitações - SERIPA2</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page2-chefe-cenipa/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_GESTOR_PASSAGEM_CENIPA2_EDIT') %}
+						
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-orange">
+							<div class="inner">
+								<h3>{{ osAutSeripa2 }}</h3>
+
+								<p>Emissão de passagens - SERIPA2</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-cenipa-seripa2/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SEC_SERIPA2_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-orange">
+							<div class="inner">
+								<h3>{{ caixaSeripa2 }}</h3>
+
+								<p>Caixa de Entrada - SERIPA2</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-seripa2/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+						
+												</div>
+
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-orange">
+							<div class="inner">
+								<h3>{{ acompanhamentoSeripa2 }}</h3>
+
+								<p>Acompanhamento - SERIPA2</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-acompanhamento-seripa2/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+
+
+						
+						{% endif %}
+						
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_ORDENADOR_DESPESAS3_EDIT') %}
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-navy">
+							<div class="inner">
+								<h3>{{ seripa3 }}</h3>
+
+								<p>Solicitações - SERIPA3</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page3-chefe-cenipa/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_GESTOR_PASSAGEM_CENIPA3_EDIT') %}
+						
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-navy">
+							<div class="inner">
+								<h3>{{ osAutSeripa3 }}</h3>
+
+								<p>Emissão de passagens - SERIPA3</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-cenipa-seripa3/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SEC_SERIPA3_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-navy">
+							<div class="inner">
+								<h3>{{ caixaSeripa3 }}</h3>
+
+								<p>Caixa de Entrada - SERIPA3</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-seripa3/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+						
+						</div>
+
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-yellow">
+							<div class="inner">
+								<h3>{{ acompanhamentoSeripa3 }}</h3>
+
+								<p>Acompanhamento - SERIPA3</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-acompanhamento-seripa3/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+
+						
+						{% endif %}
+						
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_ORDENADOR_DESPESAS4_EDIT') %}
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-red">
+							<div class="inner">
+								<h3>{{ seripa4 }}</h3>
+
+								<p>Solicitações - SERIPA4</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page4-chefe-cenipa/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_GESTOR_PASSAGEM_CENIPA4_EDIT') %}
+						
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-red">
+							<div class="inner">
+								<h3>{{ osAutSeripa4 }}</h3>
+
+								<p>Emissão de passagens - SERIPA4</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-cenipa-seripa4/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SEC_SERIPA4_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-red">
+							<div class="inner">
+								<h3>{{ caixaSeripa4 }}</h3>
+
+								<p>Caixa de Entrada - SERIPA4</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-seripa4/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+						
+							</div>
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-red">
+							<div class="inner">
+								<h3>{{ acompanhamentoSeripa4 }}</h3>
+
+								<p>Acompanhamento - SERIPA4</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-acompanhamento-seripa4/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+
+						
+
+					
+						{% endif %}
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_ORDENADOR_DESPESAS5_EDIT') %}
+						
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-black">
+							<div class="inner">
+								<h3>{{ seripa5 }}</h3>
+
+								<p>Solicitações - SERIPA5</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page5-chefe-cenipa/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_GESTOR_PASSAGEM_CENIPA5_EDIT') %}
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-black">
+							<div class="inner">
+								<h3>{{ osAutSeripa5 }}</h3>
+
+								<p>Emissão de passagens - SERIPA5</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-cenipa-seripa5/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SEC_SERIPA5_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-black">
+							<div class="inner">
+								<h3>{{ caixaSeripa5 }}</h3>
+
+								<p>Caixa de Entrada - SERIPA5</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-seripa5/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+						
+						</div>
+						</div>
+						</div>
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-black">
+							<div class="inner">
+								<h3>{{ acompanhamentoSeripa5 }}</h3>
+
+								<p>Acompanhamento - SERIPA5</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-acompanhamento-seripa5/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+
+						
+
+						
+						{% endif %}
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_ORDENADOR_DESPESAS6_EDIT') %}
+
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-yellow">
+							<div class="inner">
+								<h3>{{ seripa6 }}</h3>
+
+								<p>Solicitações - SERIPA6</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page6-chefe-cenipa/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_GESTOR_PASSAGEM_CENIPA6_EDIT') %}
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-yellow">
+							<div class="inner">
+								<h3>{{ osAutSeripa6 }}</h3>
+
+								<p>Emissão de passagens - SERIPA6</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-cenipa-seripa6/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SEC_SERIPA6_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-yellow">
+							<div class="inner">
+								<h3>{{ caixaSeripa6 }}</h3>
+
+								<p>Caixa de Entrada - SERIPA6</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-seripa6/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-yellow">
+							<div class="inner">
+								<h3>{{ acompanhamentoSeripa6 }}</h3>
+
+								<p>Acompanhamento - SERIPA6</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-acompanhamento-seripa6/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+		
+						</div>
+						
+						{% endif %}
+						
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_ORDENADOR_DESPESAS7_EDIT') %}
+
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-aqua">
+							<div class="inner">
+								<h3>{{ seripa7 }}</h3>
+
+								<p>Solicitações - SERIPA7</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page7-chefe-cenipa/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_GESTOR_PASSAGEM_CENIPA7_EDIT') %}
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-aqua">
+							<div class="inner">
+								<h3>{{ osAutSeripa7 }}</h3>
+
+								<p>Emissão de passagens - SERIPA7</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-cenipa-seripa7/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SEC_SERIPA7_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-aqua">
+							<div class="inner">
+								<h3>{{ caixaSeripa7 }}</h3>
+
+								<p>Caixa de Entrada - SERIPA7</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-gestor-seripa7/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-aqua">
+							<div class="inner">
+								<h3>{{ acompanhamentoSeripa7 }}</h3>
+
+								<p>Acompanhamento - SERIPA7</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-acompanhamento-seripa7/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						{% endif %}
+						
+
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SERIPA1_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-blue">
+							<div class="inner">
+								<h3>{{ chSeripa1 }}</h3>
+
+								<p>Caixa de Entrada - CHEFE SERIPA1</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-ch-seripa1/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						
+						{% endif %}
+						
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SERIPA2_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-blue">
+							<div class="inner">
+								<h3>{{ chSeripa2 }}</h3>
+
+								<p>Caixa de Entrada - CHEFE SERIPA2</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-ch-seripa2/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						{% endif %}
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SERIPA3_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-blue">
+							<div class="inner">
+								<h3>{{ chSeripa3 }}</h3>
+
+								<p>Caixa de Entrada - CHEFE SERIPA3</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-ch-seripa3/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						{% endif %}
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SERIPA4_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-blue">
+							<div class="inner">
+								<h3>{{ chSeripa4 }}</h3>
+
+								<p>Caixa de Entrada - CHEFE SERIPA4</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-ch-seripa4/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						{% endif %}
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SERIPA5_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-blue">
+							<div class="inner">
+								<h3>{{ chSeripa5 }}</h3>
+
+								<p>Caixa de Entrada - CHEFE SERIPA5</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-ch-seripa5/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						{% endif %}
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SERIPA6_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-blue">
+							<div class="inner">
+								<h3>{{ chSeripa6 }}</h3>
+
+								<p>Caixa de Entrada - CHEFE SERIPA6</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-ch-seripa6/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						{% endif %}
+						
+						{% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN_SERIPA7_EDIT') %}
+						<div class="col-md-2 col-xs-6">
+											
+						<!-- start rendering, block.id: 578e68d87e206 - page.id: no related page - name:  -->
+
+						<!-- small box -->
+						<div class="small-box bg-blue">
+							<div class="inner">
+								<h3>{{ chSeripa7 }}</h3>
+
+								<p>Caixa de Entrada - CHEFE SERIPA7</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-inbox"></i>
+							</div>
+							<a href="/admin/page-ch-seripa7/list" class="small-box-footer">
+								ver mais <i class="fa fa-arrow-circle-right"></i>
+							</a>
+						</div>
+
+						
+
+						</div>
+						{% endif %}
+						
+						
+						
+	
+
+									
+									
+	
+    
+    <div class="row">
+                        
+                                                
+                
+                        
+                            
+                            
+                            
+                                                                        </section>
+                            </div>
+							
+		 
+      <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+</div>
+   
+   
+    {% if blocks.bottom|length > 0 %}
+        <div class="row">
+            {% for block in blocks.bottom %}
+                <div class="{{ block.class }}">
+                    {{ sonata_block_render({ 'type': block.type, 'settings': block.settings}) }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+
+    {{ sonata_block_render_event('sonata.admin.dashboard.bottom', { 'admin_pool': admin_pool }) }}
+	
+	
+	
+
+{% endblock %}
+

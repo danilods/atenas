@@ -1,0 +1,102 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RoteiroMissao
+ *
+ * @ORM\Table(name="roteiro_missao", indexes={@ORM\Index(name="fk_roteiro_missao_geografia_cidade1_idx", columns={"geografia_cidade_id"}), @ORM\Index(name="fk_roteiro_missao_tb_ordem_servico1_idx", columns={"ordem_servico_id"})})
+ * @ORM\Entity
+ */
+class RoteiroMissao
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_inicio", type="date", nullable=true)
+     */
+    private $dataInicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_termino", type="date", nullable=true)
+     */
+    private $dateTermino;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="adicional_deslocamento", type="boolean", nullable=true)
+     */
+    private $adicionalDeslocamento;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hora_inicio", type="string", length=45, nullable=true)
+     */
+    private $horaInicio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hora_final", type="string", length=45, nullable=true)
+     */
+    private $horaFinal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="transporte_utilizado", type="string", length=100, nullable=false)
+     */
+    private $transporteUtilizado = '***';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valor_diaria", type="decimal", precision=6, scale=2, nullable=false)
+     */
+    private $valorDiaria = '0.00';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="pernoite", type="boolean", nullable=false)
+     */
+    private $pernoite;
+
+    /**
+     * @var \GeografiaCidade
+     *
+     * @ORM\ManyToOne(targetEntity="GeografiaCidade")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="geografia_cidade_id", referencedColumnName="id")
+     * })
+     */
+    private $geografiaCidade;
+
+    /**
+     * @var \TbOrdemServico
+     *
+     * @ORM\ManyToOne(targetEntity="TbOrdemServico")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ordem_servico_id", referencedColumnName="id")
+     * })
+     */
+    private $ordemServico;
+
+
+}
+

@@ -1,0 +1,633 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+
+        app.admin.tb_calculo_despesa_os:
+            class: AppBundle\Admin\TbCalculoDespesaOsAdmin
+            arguments: [~, AppBundle\Entity\TbCalculoDespesaOs, AppBundle:TbCalculoDespesaOsAdmin]
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: "Despesas", label: Cálculo de despesa }
+
+        admin_aerodromo:
+            class: AppBundle\Admin\AerodromoGeralAdmin
+            arguments: [~, AppBundle\Entity\AerodromoGeral, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm,group: "Taxonomias", label: Aerodromo }
+                
+        admin_cidade:
+            class: AppBundle\Admin\GeografiaCidadeAdmin
+            arguments: [~, AppBundle\Entity\GeografiaCidade, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: "Taxonomias",label: Cidade }
+        
+        admin_uf:
+            class: AppBundle\Admin\GeografiaUfAdmin
+            arguments: [~, AppBundle\Entity\GeografiaUf, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm,group: "Taxonomias", label: Estado }
+                
+        
+        
+        admin_quadro:
+            class: AppBundle\Admin\QuadroEspecialidadeAdmin
+            arguments: [~, AppBundle\Entity\TbQuadroEspecialidade, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm,group: "Efetivo", label: Quadro }
+                
+        admin_os_controle:
+            class: AppBundle\Admin\OsControleAdmin
+            arguments: [~, AppBundle\Entity\TbOsControle, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm,group: "Taxomias", label: Controle }
+        
+               
+        admin_unidade:
+           class: AppBundle\Admin\UnidadeAdmin
+           arguments: [~, AppBundle\Entity\TbUnidade, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Unidade", label: Unidade}
+       
+        admin_usuario:
+           class: AppBundle\Admin\UsuarioAdmin
+           arguments: [~, AppBundle\Entity\TbUsuario, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Efetivo", label: Efetivo}
+        
+        admin_divisao:
+           class: AppBundle\Admin\DivisaoAdmin
+           arguments: [~, AppBundle\Entity\TbDivisao, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Unidade", label: Divisão}
+               
+        admin_setor_divisao:
+           class: AppBundle\Admin\SetorDivisaoAdmin
+           arguments: [~, AppBundle\Entity\TbSetorDivisao, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Unidade", label: Setor Divisão}
+        
+        admin_hierarquia:
+           class: AppBundle\Admin\CirculoHierarquicoAdmin
+           arguments: [~, AppBundle\Entity\TbCirculoHierarquico, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Efetivo", label: Circulo Hierarquico}
+               
+        admin_posto_graduacao:
+           class: AppBundle\Admin\PostoGraduacaoAdmin
+           arguments: [~, AppBundle\Entity\TbPostoGraduacao, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Efetivo", label: Posto Graduação}
+               
+               
+        admin_ordem_servico:
+           class: AppBundle\Admin\OrdemServicoAdmin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Taxonomias", label: Ordem Serviço}
+        
+
+        admin_orcamento:
+           class: AppBundle\Admin\OrcamentoAdmin
+           arguments: [~, AppBundle\Entity\TbOrcamento, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Orcamento Unidades}
+        
+        admin_ordem_servico_passagem_aerea:
+           class: AppBundle\Admin\OrdemServicoAeroportoAdmin
+           arguments: [~, AppBundle\Entity\TbOrdemServicoAeroporto, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Taxonomias", label: Passagens Aéreas}
+               
+        admin_ordem_servico_passagem_aerea_ext:
+           class: AppBundle\Admin\OrdemServicoAeroportoExtAdmin
+           arguments: [~, AppBundle\Entity\TbOrdemServicoAeroportoExt, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Taxonomias", label: Passagens Aéreas Exterior}       
+        
+        admin_ordem_servico_roteiro_missao:
+           class: AppBundle\Admin\RoteiroMissaoAdmin
+           arguments: [~, AppBundle\Entity\RoteiroMissao, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Taxonomias", label: Roteiro Missão}
+               
+        admin_ordem_servico_roteiro_exterior:
+           class: AppBundle\Admin\RoteiroExteriorAdmin
+           arguments: [~, AppBundle\Entity\RoteiroExterior, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Taxonomias", label: Roteiro Exterior}
+        
+        
+        admin_ordem_servico_passagem_despesa:
+           class: AppBundle\Admin\MovimentacaoDespesaPassagemAdmin
+           arguments: [~, AppBundle\Entity\TbMovimentacaoDespesaPassagem, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Despesas Passagens Aéreas}
+
+        admin_ordem_servico_despesa:
+                   class: AppBundle\Admin\MovimentacaoDespesaOsAdmin
+                   arguments: [~, AppBundle\Entity\TbMovimentacaoDespesaOs, ~]
+                   tags:
+                       - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Despesas Ordem de Serviço}
+
+        
+        admin_natureza_missao:
+           class: AppBundle\Admin\NaturezaMissaoAdmin
+           arguments: [~, AppBundle\Entity\TbNaturezaMissao, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Taxonomias", label: Natureza Missão}     
+
+        admin_natureza_despesa:
+           class: AppBundle\Admin\NaturezaDespesaAdmin
+           arguments: [~, AppBundle\Entity\TbNaturezaDespesa, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Natureza de Despesa}
+
+        admin_natureza_despesa1:
+           class: AppBundle\Admin\NaturezaDespesaAdmin1
+           arguments: [~, AppBundle\Entity\TbNaturezaDespesa, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Natureza de Despesas SERIPA 1}
+
+        admin_natureza_despesa2:
+           class: AppBundle\Admin\NaturezaDespesaAdmin2
+           arguments: [~, AppBundle\Entity\TbNaturezaDespesa, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Natureza de Despesas SERIPA 2}              
+
+        admin_natureza_despesa3:
+           class: AppBundle\Admin\NaturezaDespesaAdmin3
+           arguments: [~, AppBundle\Entity\TbNaturezaDespesa, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Natureza de Despesas SERIPA 3}
+
+
+        admin_natureza_despesa4:
+           class: AppBundle\Admin\NaturezaDespesaAdmin4
+           arguments: [~, AppBundle\Entity\TbNaturezaDespesa, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Natureza de Despesas SERIPA 4} 
+
+        admin_natureza_despesa5:
+           class: AppBundle\Admin\NaturezaDespesaAdmin5
+           arguments: [~, AppBundle\Entity\TbNaturezaDespesa, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Natureza de Despesas SERIPA 5}
+
+        admin_natureza_despesa6:
+           class: AppBundle\Admin\NaturezaDespesaAdmin6
+           arguments: [~, AppBundle\Entity\TbNaturezaDespesa, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Natureza de Despesas SERIPA 6}
+
+        admin_natureza_despesa7:
+           class: AppBundle\Admin\NaturezaDespesaAdmin7
+           arguments: [~, AppBundle\Entity\TbNaturezaDespesa, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Natureza de Despesas SERIPA 7}      
+
+        admin_controle_natureza_despesa:
+          class: AppBundle\Admin\ControleNaturezaDespesaAdmin
+          arguments: [~, AppBundle\Entity\TbControleNaturezaDespesa, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Controle }
+
+        admin_controle_diarias:
+          class: AppBundle\Admin\DiariasControleAdmin
+          arguments: [~, AppBundle\Entity\TbDiariasControle, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Controle diárias }                
+
+        admin_taxonomia_natureza_despesa:
+          class: AppBundle\Admin\TaxonomiaNaturezaDespesaAdmin
+          arguments: [~, AppBundle\Entity\TbTaxonomiaNaturezaDespesa, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm,group: "Taxonomias", label: Taxonomia Natureza de Despesas}
+
+              
+        descentralizacao_unidade:
+                   class: AppBundle\Admin\DescentralizacaoUnidadeAdmin
+                   arguments: [~, AppBundle\Entity\TbNaturezaDespesaDescentralizacaoUnidade, ~]
+                   tags:
+                       - { name: sonata.admin, manager_type: orm,group: "Despesas", label: Descentralização de Despesas por unidade}
+       
+       #caixa de entrada ch dpg
+        admin_dpg:
+           class: AppBundle\Admin\ChDpgAdmin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label: DPG}
+ 
+        #caixa de entrada ch dfa
+ 
+        admin_dfa:
+           class: AppBundle\Admin\ChDfaAdmin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label: DFA}
+        
+        #caixa de entrada ch dop
+
+        admin_dop:
+           class: AppBundle\Admin\ChDopAdmin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label: DOP}
+ 
+        #caixa de entrada, seção de passagem - dpg, das OS's do CENIPA 
+ 
+        admin_gestor_passagem_cenipa:
+           class: AppBundle\Admin\ChGestorPassagemAdmin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm, audit="true",group: "CENIPA", label:ORDENS DE SERVIÇOS - CENIPA}
+
+
+        admin_gestor_exterior:
+                   class: AppBundle\Admin\GestorExteriorAdmin
+                   arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+                   tags:
+                       - { name: sonata.admin, manager_type: orm,group: "CENIPA", label: Missões no Exterior}
+            
+
+        #caixa de entrada, seção de passagem - dpg, das OS's do SERIPA1 
+         
+        admin_gestor_passagem_cenipa1:
+           class: AppBundle\Admin\ChGestorPassagemAdmin1
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label:Passagens - SERIPA1}
+
+        #caixa de entrada, seção de passagem - dpg, das OS's do SERIPA2        
+        admin_gestor_passagem_cenipa2:
+           class: AppBundle\Admin\ChGestorPassagemAdmin2
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label:Passagens - SERIPA2}
+               
+        #caixa de entrada, seção de passagem - dpg, das OS's do SERIPA3 
+    
+        admin_gestor_passagem_cenipa3:
+           class: AppBundle\Admin\ChGestorPassagemAdmin3
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label:Passagens - SERIPA3}
+  
+        #caixa de entrada, seção de passagem - dpg, das OS's do SERIPA4 
+  
+        admin_gestor_passagem_cenipa4:
+           class: AppBundle\Admin\ChGestorPassagemAdmin4
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label:Passagens - SERIPA4}
+  
+        #caixa de entrada, seção de passagem - dpg, das OS's do SERIPA5 
+  
+        admin_gestor_passagem_cenipa5:
+           class: AppBundle\Admin\ChGestorPassagemAdmin5
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label:Passagens - SERIPA5}
+ 
+        #caixa de entrada, seção de passagem - dpg, das OS's do SERIPA6
+ 
+        admin_gestor_passagem_cenipa6:
+           class: AppBundle\Admin\ChGestorPassagemAdmin6
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label:Passagens - SERIPA6}
+
+        #caixa de entrada, seção de passagem - dpg, das OS's do SERIPA7 
+               
+        admin_gestor_passagem_cenipa7:
+           class: AppBundle\Admin\ChGestorPassagemAdmin7
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label:Passagens - SERIPA7} 
+ 
+        #caixa de entrada VCH/CH - OS do CENIPA
+ 
+        admin_ordenador_despesas:
+           class: AppBundle\Admin\ChOrdenadorDespesasAdmin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label:REQUISIÇÕES - CENIPA}
+        
+        #caixa de entrada VCH/CH - OS vindas do SERIPA1
+        
+        admin_ordenador_despesas1:
+           class: AppBundle\Admin\ChOrdenadorDespesasAdmin1
+           arguments: [~, AppBundle\Entity\TbOrdemServico, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "ORDENADOR", label:REQUISIÇÕES - SERIPA1}
+               
+        #caixa de entrada VCH/CH - OS vindas do SERIPA2
+
+        admin_ordenador_despesas2:
+           class: AppBundle\Admin\ChOrdenadorDespesasAdmin2
+           arguments: [~, AppBundle\Entity\TbOrdemServico, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "ORDENADOR", label:REQUISIÇÕES - SERIPA2}
+  
+        #caixa de entrada VCH/CH - OS vindas do SERIPA3
+  
+        admin_ordenador_despesas3:
+           class: AppBundle\Admin\ChOrdenadorDespesasAdmin3
+           arguments: [~, AppBundle\Entity\TbOrdemServico, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "ORDENADOR", label:REQUISIÇÕES - SERIPA3}
+       
+        #caixa de entrada VCH/CH - OS vindas do SERIPA4
+       
+        admin_ordenador_despesas4:
+           class: AppBundle\Admin\ChOrdenadorDespesasAdmin4
+           arguments: [~, AppBundle\Entity\TbOrdemServico, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "ORDENADOR", label:REQUISIÇÕES - SERIPA4}
+
+        #caixa de entrada VCH/CH - OS vindas do SERIPA5
+               
+        admin_ordenador_despesas5:
+           class: AppBundle\Admin\ChOrdenadorDespesasAdmin5
+           arguments: [~, AppBundle\Entity\TbOrdemServico, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "ORDENADOR", label:REQUISIÇÕES - SERIPA5}
+
+        #caixa de entrada VCH/CH - OS vindas do SERIPA6
+               
+        admin_ordenador_despesas6:
+           class: AppBundle\Admin\ChOrdenadorDespesasAdmin6
+           arguments: [~, AppBundle\Entity\TbOrdemServico, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "ORDENADOR", label:REQUISIÇÕES - SERIPA6}
+ 
+        #caixa de entrada VCH/CH - OS vindas do SERIPA7
+ 
+        admin_ordenador_despesas7:
+           class: AppBundle\Admin\ChOrdenadorDespesasAdmin7
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "ORDENADOR", label:REQUISIÇÕES - SERIPA7}
+       
+  
+        #caixa de entrada CH SERIPA1
+  
+        admin_seripa1:
+           class: AppBundle\Admin\ChSeripa1Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, ~]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA1", label: SERIPA1}
+        
+        #caixa de entrada administrador SERIPA1
+        admin_sec_seripa1:
+           class: AppBundle\Admin\GestorSeripa1Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA1", label: Gestor SERIPA 1}
+      
+         #caixa de entrada CH SERIPA2
+     
+        admin_seripa2:
+           class: AppBundle\Admin\ChSeripa2Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA2", label: SERIPA2}
+       
+        #caixa de entrada administrador SERIPA2
+        admin_sec_seripa2:
+           class: AppBundle\Admin\GestorSeripa2Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA2", label: Gestor SERIPA 2}
+        
+        #caixa de entrada CH SERIPA3
+        admin_seripa3:
+           class: AppBundle\Admin\ChSeripa3Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA3", label: SERIPA3}
+        
+        #caixa de entrada administrador SERIPA3
+        admin_sec_seripa3:
+           class: AppBundle\Admin\GestorSeripa3Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA3", label: Gestor SERIPA 3}
+        
+        #caixa de entrada CH SERIPA4
+        admin_seripa4:
+           class: AppBundle\Admin\ChSeripa4Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA4", label: SERIPA4}
+        
+        #caixa de entrada administrador SERIPA4
+        admin_sec_seripa4:
+           class: AppBundle\Admin\GestorSeripa4Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA4", label: Gestor SERIPA 4}
+        
+        #caixa de entrada CH SERIPA5
+        admin_seripa5:
+           class: AppBundle\Admin\ChSeripa5Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA5", label: SERIPA5}
+        
+         #caixa de entrada administrador SERIPA5
+        admin_sec_seripa5:
+           class: AppBundle\Admin\GestorSeripa5Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA5", label: Gestor SERIPA 5}  
+        
+        #caixa de entrada CH SERIPA6
+        admin_seripa6:
+           class: AppBundle\Admin\ChSeripa6Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA6", label: SERIPA6}
+        
+        #caixa de entrada administrador SERIPA6
+        admin_sec_seripa6:
+           class: AppBundle\Admin\GestorSeripa6Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA6", label: Gestor SERIPA 6}
+        
+        
+      #caixa de entrada CH SERIPA7
+        admin_seripa7:
+           class: AppBundle\Admin\ChSeripa7Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA7", label: SERIPA7}
+        
+        #caixa de entrada administrador SERIPA7
+        admin_sec_seripa7:
+           class: AppBundle\Admin\GestorSeripa7Admin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA7", label: Gestor SERIPA 7}   
+
+        #caixa de acompanhamento de OS CENIPA
+        admin_acompanhamento_cenipa:
+           class: AppBundle\Admin\GestorAcompanhamentoCenipaAdmin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label: Acompanhamento Cenipa} 
+
+#caixa de acompanhamento de OS SERIPA 1
+        admin_acompanhamento_gestor_cenipa_seripa1:
+           class: AppBundle\Admin\GestorAcompanhamentoCenipaAdmin1
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label: Acompanhamento Seripa 1}
+
+
+#caixa de acompanhamento do SERIPA OS SERIPA 1
+        admin_acompanhamento_gestor_seripa1:
+           class: AppBundle\Admin\GestorAcompanhamentoAdmin1
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA1", label: Acompanhamento Seripa 1}
+               
+
+#caixa de acompanhamento de OS SERIPA 2
+        admin_acompanhamento_gestor_cenipa_seripa2:
+           class: AppBundle\Admin\GestorAcompanhamentoCenipaAdmin2
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label: Acompanhamento Seripa 2}
+
+
+#caixa de acompanhamento do SERIPA OS SERIPA 2
+        admin_acompanhamento_gestor_seripa2:
+           class: AppBundle\Admin\GestorAcompanhamentoAdmin2
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA2", label: Acompanhamento Seripa 2}               
+
+#caixa de acompanhamento de OS SERIPA 3
+        admin_acompanhamento_gestor_cenipa_seripa3:
+           class: AppBundle\Admin\GestorAcompanhamentoCenipaAdmin3
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label: Acompanhamento Seripa 3} 
+
+#caixa de acompanhamento do SERIPA OS SERIPA 3
+        admin_acompanhamento_gestor_seripa3:
+           class: AppBundle\Admin\GestorAcompanhamentoAdmin3
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA3", label: Acompanhamento Seripa 3}               
+
+#caixa de acompanhamento de OS SERIPA 4
+        admin_acompanhamento_gestor_cenipa_seripa4:
+           class: AppBundle\Admin\GestorAcompanhamentoCenipaAdmin4
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label: Acompanhamento Seripa 4} 
+               
+#caixa de acompanhamento do SERIPA OS SERIPA 4
+        admin_acompanhamento_gestor_seripa4:
+           class: AppBundle\Admin\GestorAcompanhamentoAdmin4
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA4", label: Acompanhamento Seripa 4}               
+
+#caixa de acompanhamento de OS SERIPA 5
+        admin_acompanhamento_gestor_cenipa_seripa5:
+           class: AppBundle\Admin\GestorAcompanhamentoCenipaAdmin5
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label: Acompanhamento Seripa 5}
+
+#caixa de acompanhamento do SERIPA OS SERIPA 5
+        admin_acompanhamento_gestor_seripa5:
+           class: AppBundle\Admin\GestorAcompanhamentoAdmin5
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA5", label: Acompanhamento Seripa 5}
+
+#caixa de acompanhamento do SERIPA OS SERIPA 6
+        admin_acompanhamento_gestor_seripa6:
+           class: AppBundle\Admin\GestorAcompanhamentoAdmin6
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA6", label: Acompanhamento Seripa 6}
+
+               
+
+#caixa de acompanhamento do CENIPA OS SERIPA 6
+        admin_acompanhamento_gestor_cenipa_seripa6:
+           class: AppBundle\Admin\GestorAcompanhamentoCenipaAdmin6
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label: Acompanhamento Seripa 6} 
+               
+#caixa de acompanhamento de OS SERIPA 7
+        admin_acompanhamento_gestor_cenipa_seripa7:
+           class: AppBundle\Admin\GestorAcompanhamentoCenipaAdmin7
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label: Acompanhamento Seripa 7}   
+
+#caixa de acompanhamento do SERIPA OS SERIPA 7
+        admin_acompanhamento_gestor_seripa7:
+           class: AppBundle\Admin\GestorAcompanhamentoAdmin7
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA7", label: Acompanhamento Seripa 7}
+
+
+        admin_arquivo_cenipa:
+           class: AppBundle\Admin\GestorArquivoCenipaAdmin
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "CENIPA", label: O.S Finalizadas/Canceladas} 
+               
+        admin_arquivo_seripa1:
+           class: AppBundle\Admin\GestorArquivoAdmin1
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA1", label: Processadas/Canceladas Seripa1}
+        
+        admin_arquivo_seripa2:
+           class: AppBundle\Admin\GestorArquivoAdmin2
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA2", label: Processadas/Canceladas Seripa2}
+        
+        admin_arquivo_seripa3:
+           class: AppBundle\Admin\GestorArquivoAdmin3
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA3", label: Processadas/Canceladas Seripa3}
+        
+        admin_arquivo_seripa4:
+           class: AppBundle\Admin\GestorArquivoAdmin4
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA4", label: Processadas/Canceladas Seripa4}
+        
+        admin_arquivo_seripa5:
+           class: AppBundle\Admin\GestorArquivoAdmin5
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA5", label: Processadas/Canceladas Seripa5}
+               
+        admin_arquivo_seripa6:
+           class: AppBundle\Admin\GestorArquivoAdmin6
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA6", label: Processadas/Canceladas Seripa6}
+        
+        admin_arquivo_seripa7:
+           class: AppBundle\Admin\GestorArquivoAdmin7
+           arguments: [~, AppBundle\Entity\TbOrdemServico, AppBundle:GestorSeripaAdmin]
+           tags:
+               - { name: sonata.admin, manager_type: orm,group: "SERIPA7", label: Processadas/Canceladas Seripa7}
+               

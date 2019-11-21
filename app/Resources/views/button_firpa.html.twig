@@ -1,0 +1,7 @@
+{% if object.statusPassagem > 0 %}
+<a href="{{ admin.generateObjectUrl('firpa', object) }}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-download-alt"></span> FIRPA</a>
+{% else %}
+<a href="#" class="btn btn-default btn-sm disabled"><span class="fa fa-times "></span> Sem FIRPA</a>
+{% endif %}
+
+

@@ -1,0 +1,52 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+	{% if object.statusOs == 'AUTORIZADA'%}
+	<span class="label label-success">{{object.statusOs }}</span>
+	
+	{% elseif object.statusOs == 'NAO AUTORIZADA'%}
+	
+	<span class="label label-danger">{{object.statusOs }}</span>
+	
+	{% elseif object.statusOs == 'EM PROCESSAMENTO'%}
+	
+	<span class="label label-default">{{object.statusOs }}</span>
+	
+	{% elseif object.statusOs == 'PROCESSADA' %}
+	
+	<span class="label label-info">{{object.statusOs }}</span>
+	
+	{% elseif object.statusOs == 'CANCELADA' %}
+	
+	<span class="label label-danger">{{object.statusOs }}</span>
+	
+	{% elseif object.statusOs == 'DEVOLVIDA' %}
+	
+	<span class="label label-warning">{{object.statusOs }}</span>
+	
+	{% elseif object.statusOs == 'ARQUIVADA' %}
+	
+	<span class="label label-default">{{object.statusOs }}</span>	
+	
+	{% elseif object.statusOs == 'PENDENTE' %}
+	
+	<span class="label label-warning">{{object.statusOs }}</span>
+	
+    </div>	
+	
+	{% elseif object.statusOs == 'CONFIRMADA' %}
+	
+	<span class="label label-primary">{{object.statusOs }}</span>
+	
+    </div>
+	
+	{% elseif object.statusOs == 'ANALISADA' %}
+	
+	<span class="label label-warning">{{object.statusOs }}</span>
+	
+    </div>
+	
+	
+	{% endif %}
+{% endblock %}

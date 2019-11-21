@@ -1,0 +1,208 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+    
+		{% if object.prioridade == 0 %}
+		
+		{% set difference = date(object.cadastroEm|date_modify("+0 days")|date('Y/m/d')).diff(date('now'|date('Y/m/d')))%}
+			
+			
+			{% set leftDays = difference.days %}
+			
+			<p class="bg-warning"><i class="fa fa-bell" aria-hidden="true"></i>
+				&nbsp&nbsp&nbspRelato não priorizado há 
+			{{leftDays}} dias.</p>
+					
+			
+					
+					
+			
+		
+		{% elseif object.prioridade == 1 %}
+		
+		
+			{% set prazoFinal = object.cadastroEm|date_modify("+60 days")|date('d/m/Y') %}
+		
+			
+			{% set difference = date(object.cadastroEm|date_modify("+60 days")|date('Y/m/d')).diff(date('now'|date('Y/m/d')))%}
+			
+			
+			{% set leftDays = difference.days %}
+			
+			{% if leftDays == 0 %}
+			
+				<i class="fa fa-check-circle" aria-hidden="true"></i>
+					<span class="label label-warning">
+					
+					Prazo expira em 01 dia.
+					
+					</span>
+				
+				
+			{% elseif  date(object.cadastroEm|date_modify("+60 days")|date('Y/m/d')) < date('now'|date('Y/m/d')) %}
+				
+				
+				
+				</p>
+				<i class="fa fa-check-circle" aria-hidden="true"></i>
+				<p class="bg-danger">&nbsp&nbsp&nbspPrioridade 01 - 60 dias. Prazo final estimado em {{prazoFinal}} dias.<br>
+				
+				</p>
+				
+				<p class="bg-danger">&nbsp&nbsp&nbspPrazo em {{ leftDays }} dias.<br>
+				
+				</p>
+			
+			
+				
+			
+				
+				
+					
+			{% else %}
+				
+		
+			
+				<p class="bg-success"><i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp&nbsp&nbspPrioridade 01 - 60 dias. <br>
+				
+				</p>
+				
+				<p class="bg-success"><i class="fa fa-clock-o" aria-hidden="true"></i>
+					&nbsp&nbsp&nbsp{{ leftDays }} dias para o termino do prazo.
+				
+				</p>
+				
+				<p class="bg-success"><i class="fa fa-calendar" aria-hidden="true"></i>
+					&nbsp&nbsp&nbspPrazo limite previsto em {{ prazoFinal }}
+				
+				</p>
+			
+			
+						 
+					
+				  
+				 
+			{% endif %}
+		
+		{% elseif object.prioridade == 2 %}
+		
+					{% set prazoFinal = object.cadastroEm|date_modify("+90 days")|date('d/m/Y') %}
+		
+			
+			{% set difference = date(object.cadastroEm|date_modify("+90 days")|date('Y/m/d')).diff(date('now'|date('Y/m/d')))%}
+			
+			
+			{% set leftDays = difference.days %}
+			
+			{% if leftDays == 0 %}
+			
+				<span class="label label-warning">
+					
+					Prazo expira em 01 dia.
+					
+					</span>
+				
+				
+			{% elseif  date(object.cadastroEm|date_modify("+90 days")|date('Y/m/d')) < date('now'|date('Y/m/d')) %}
+			
+				<i class="fa fa-calendar" aria-hidden="true"></i>
+				<p class="bg-danger">Prazo final estimado em {{ prazoFinal }}<br></p>
+				
+				<i class="fa fa-bullhorn" aria-hidden="true"></i>
+				<p class="bg-danger"> Excedido em {{ leftDays }} dias<br></p>
+						
+					
+					</span>
+				
+			
+				
+				
+					
+			{% else %}
+			
+				<p class="bg-success"><i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp&nbsp&nbspPrioridade 02 - 90 dias. <br>
+				
+				</p>
+				
+				<p class="bg-success"><i class="fa fa-clock-o" aria-hidden="true"></i>
+					&nbsp&nbsp&nbsp{{ leftDays }} dias para o termino do prazo.
+				
+				</p>
+				
+				<p class="bg-success"><i class="fa fa-calendar" aria-hidden="true"></i>
+					&nbsp&nbsp&nbspPrazo limite previsto em {{ prazoFinal }}
+				
+				</p>
+						 
+					
+				  
+				 
+			{% endif %}
+			
+			{% elseif object.prioridade == 3 %}
+		
+					{% set prazoFinal = object.cadastroEm|date_modify("+120 days")|date('d/m/Y') %}
+		
+			
+			{% set difference = date(object.cadastroEm|date_modify("+120 days")|date('Y/m/d')).diff(date('now'|date('Y/m/d')))%}
+			
+			
+			{% set leftDays = difference.days %}
+			
+			{% if leftDays == 0 %}
+			
+				<span class="label label-warning">
+					
+					Prazo expira em 01 dia.
+					
+					</span>
+				
+				
+			{% elseif  date(object.cadastroEm|date_modify("+120 days")|date('Y/m/d')) < date('now'|date('Y/m/d')) %}
+			
+				<i class="fa fa-calendar" aria-hidden="true"></i>
+				<p class="bg-danger">Prazo final estimado em {{ prazoFinal }}<br></p>
+				
+				<i class="fa fa-bullhorn" aria-hidden="true"></i>
+				<p class="bg-danger"> Excedido em {{ leftDays }} dias<br></p>
+						
+					
+					</span>
+				
+			
+				
+				
+					
+			{% else %}
+			
+				<p class="bg-success"><i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp&nbsp&nbspPrioridade 03 - 120 dias. <br>
+				
+				</p>
+				
+				<p class="bg-success"><i class="fa fa-clock-o" aria-hidden="true"></i>
+					&nbsp&nbsp&nbsp{{ leftDays }} dias para o termino do prazo.
+				
+				</p>
+				
+				<p class="bg-success"><i class="fa fa-calendar" aria-hidden="true"></i>
+					&nbsp&nbsp&nbspPrazo limite previsto em {{ prazoFinal }}
+				
+				</p>
+						 
+					
+				  
+				 
+			{% endif %}
+	{%endif%}
+		
+		
+						 
+					
+				  
+				 
+		
+		
+	
+    </div>
+{% endblock %}

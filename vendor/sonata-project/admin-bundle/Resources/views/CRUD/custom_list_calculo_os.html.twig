@@ -1,0 +1,45 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+
+
+{% block field %}
+		
+		
+		
+		
+		
+		
+		<table style="width:100%">
+		 
+		  <tr>
+			<th rowspan="2">{% if object.unidade == 1 %}
+			
+	
+			<i class="fa fa-home" aria-hidden="true"></i>CENIPA: <br>
+	
+				
+		
+				{% elseif object.unidade == 2 %}
+				
+	
+			<i class="fa fa-home" aria-hidden="true"></i>SERIPA 1: <br>
+	
+				
+			
+				{% endif %}</th>
+			<td>DIÁRIA CIVIL
+					
+					
+			
+			</td>
+		  </tr>
+		  <tr>
+			<td>DIÁRIA MILITAR</td>
+		  </tr>
+		</table>
+
+		
+    
+{% endblock %}
+
+

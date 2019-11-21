@@ -1,0 +1,18 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+	
+	
+	
+	<i class="fa fa-user" aria-hidden="true"></i> {{ object.tbPostoGraduacao }} {{ object.quadro }} {{object.nomeGuerra }}<br>
+
+	<i class="fa fa-tag" aria-hidden="true"></i> contato: {{object.telefone }} - {{ object.email }} <br>
+
+	<i class="fa fa-tag" aria-hidden="true"></i> contato: {{object.setorDivisao }}<br>
+
+
+	
+    </div>
+    
+{% endblock %}

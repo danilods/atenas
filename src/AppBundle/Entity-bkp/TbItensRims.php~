@@ -1,0 +1,64 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbItensRims
+ *
+ * @ORM\Table(name="tb_itens_rims", indexes={@ORM\Index(name="fk_tb_itens_rims_tb_rims1_idx", columns={"tb_rims_id"})})
+ * @ORM\Entity
+ */
+class TbItensRims
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descricao_item", type="string", length=45, nullable=true)
+     */
+    private $descricaoItem;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantidade", type="integer", nullable=true)
+     */
+    private $quantidade;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valor_item", type="string", length=45, nullable=true)
+     */
+    private $valorItem;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valor_total", type="string", length=45, nullable=true)
+     */
+    private $valorTotal;
+
+    /**
+     * @var \TbProcesso
+     *
+     * @ORM\ManyToOne(targetEntity="TbProcesso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tb_rims_id", referencedColumnName="id")
+     * })
+     */
+    private $tbRims;
+
+
+}
+

@@ -1,0 +1,12 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+	<i class="fa fa-calendar" aria-hidden="true"></i> {{ object.dataOcorrencia|date("m/d/Y") }} -
+	<i class="fa fa-clock-o" aria-hidden="true"></i> {{object.horaLocal}}<br>
+	<i class="fa fa-map-marker" aria-hidden="true"></i> {{object.cidade }}<br><br>
+	
+	
+	
+    </div>
+{% endblock %}

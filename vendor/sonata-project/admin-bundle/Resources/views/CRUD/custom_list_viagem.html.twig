@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+	<i class="fa fa-calendar" aria-hidden="true"></i> {{ object.dataViagem|date("d/m/Y") }} <br>
+	<i class="fa fa-clock-o" aria-hidden="true"></i> {{ object.horarioViagem }}
+	
+	
+	
+ 	</div>
+{% endblock %}

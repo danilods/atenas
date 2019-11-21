@@ -1,0 +1,27 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+
+	{% if object.totalAno < 40 %}
+
+    <div>
+
+		<i class="fa fa-exchange" aria-hidden="true"></i> Usuário com {{object.totalAno}} diárias executadas no ano. <br>
+		<i class="fa fa-thumbs-up" aria-hidden="true"></i> Faltam {{ 40 - object.totalAno }} diárias para exceder o limite anual previsto.<br>
+
+    </div>
+
+    {% else %}
+
+    <div>
+
+		<i class="fa fa-exchange" aria-hidden="true"></i> Usuário com {{object.totalAno}} diárias executadas no ano. <br>
+		<i class="fa fa-thumbs-down" aria-hidden="true"></i> Limite de diárias excedido anual excedido.<br>
+
+    </div>
+
+
+    {% endif %}
+    
+    
+{% endblock %}

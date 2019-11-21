@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+	
+	<i class="fa fa-money" aria-hidden="true"></i> R$ {{ object.saldoInvestimento|number_format(2, ',', '.') }} <br>
+	
+    </div>
+{% endblock %}

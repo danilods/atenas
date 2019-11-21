@@ -1,0 +1,49 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbNaturezaDespesaRecursoProcesso
+ *
+ * @ORM\Table(name="tb_natureza_despesa_recurso_processo", indexes={@ORM\Index(name="fk_tb_natureza_despesa_has_tb_processo_tb_processo1_idx", columns={"processo_id"}), @ORM\Index(name="fk_tb_natureza_despesa_has_tb_processo_tb_natureza_despesa1_idx", columns={"natureza_despesa_id"})})
+ * @ORM\Entity
+ */
+class TbNaturezaDespesaRecursoProcesso
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="natureza_despesa_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $naturezaDespesaId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="processo_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $processoId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valor_alocado", type="decimal", precision=7, scale=3, nullable=true)
+     */
+    private $valorAlocado;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_registro", type="datetime", nullable=true)
+     */
+    private $dataRegistro;
+
+
+}
+

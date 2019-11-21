@@ -1,0 +1,75 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * GeografiaPais
+ *
+ * @ORM\Table(name="geografia_pais")
+ * @ORM\Entity
+ */
+class GeografiaPais
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=45, nullable=true)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome_codigo", type="string", length=45, nullable=true)
+     */
+    private $nomeCodigo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="continente", type="string", length=45, nullable=true)
+     */
+    private $continente;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="idioma_codigo", type="string", length=45, nullable=true)
+     */
+    private $idiomaCodigo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     */
+    private $deletedAt;
+
+
+}
+

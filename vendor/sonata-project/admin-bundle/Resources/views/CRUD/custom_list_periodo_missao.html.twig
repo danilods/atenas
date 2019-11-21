@@ -1,0 +1,10 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+	<i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Saída: {{ object.inicioMissao|date("m/d/Y") }} <br>
+	<i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Retorno: {{object.retornoMissao|date("m/d/Y") }} <br>
+	<i class="fa fa-map-marker" aria-hidden="true"></i> {{object.cidade }}<br><br>
+	
+ 	</div>
+{% endblock %}

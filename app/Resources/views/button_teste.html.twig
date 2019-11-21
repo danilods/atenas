@@ -1,0 +1,12 @@
+
+{% if object.tbUsuario.getTotalAno > 35 %}
+	
+
+	<a href="{{ admin.generateObjectUrl('sad', object) }}" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-download-alt"></span> Gerar SAD (letra B)</a>
+
+{% elseif object.getTotalDiarias > 10 %}
+
+	<a href="{{ admin.generateObjectUrl('sad', object) }}" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-download-alt"></span> Gerar SAD (letra A)</a>
+
+
+{% endif %}

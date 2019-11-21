@@ -1,0 +1,134 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AerodromoGeral
+ *
+ * @ORM\Table(name="aerodromo_geral", indexes={@ORM\Index(name="fk_aerodromo_geral_geografia_cidade1_idx", columns={"cidade_id"})})
+ * @ORM\Entity
+ */
+class AerodromoGeral
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="icao", type="string", length=45, nullable=true)
+     */
+    private $icao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="iata", type="string", length=45, nullable=true)
+     */
+    private $iata;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=45, nullable=true)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="propriedade", type="string", length=45, nullable=true)
+     */
+    private $propriedade;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=45, nullable=true)
+     */
+    private $tipo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="latitude", type="string", length=45, nullable=true)
+     */
+    private $latitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude", type="string", length=45, nullable=true)
+     */
+    private $longitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="latitude_decimal", type="string", length=45, nullable=true)
+     */
+    private $latitudeDecimal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude_decimal", type="string", length=45, nullable=true)
+     */
+    private $longitudeDecimal;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="altitude", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $altitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vfr_diurno", type="string", length=45, nullable=true)
+     */
+    private $vfrDiurno;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vfr_noturno", type="string", length=45, nullable=true)
+     */
+    private $vfrNoturno;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ifr_diurno", type="string", length=45, nullable=true)
+     */
+    private $ifrDiurno;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ifr_noturno", type="string", length=45, nullable=true)
+     */
+    private $ifrNoturno;
+
+    /**
+     * @var \GeografiaCidade
+     *
+     * @ORM\ManyToOne(targetEntity="GeografiaCidade")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cidade_id", referencedColumnName="id")
+     * })
+     */
+    private $cidade;
+
+
+}
+

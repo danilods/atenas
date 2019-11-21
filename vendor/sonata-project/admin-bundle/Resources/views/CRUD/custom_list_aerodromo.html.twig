@@ -1,0 +1,10 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+	
+	{{ object.aerodromoOrigem }} 
+	<i class="fa fa-arrow-right" aria-hidden="true"></i>  {{ object.aerodromoDestino }} <br>
+	
+    </div>
+{% endblock %}

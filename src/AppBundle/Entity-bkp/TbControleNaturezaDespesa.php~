@@ -1,0 +1,64 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbControleNaturezaDespesa
+ *
+ * @ORM\Table(name="tb_controle_natureza_despesa", indexes={@ORM\Index(name="fk_tb_controle_natureza_despesa_tb_natureza_despesa1_idx", columns={"tb_natureza_despesa_id"})})
+ * @ORM\Entity
+ */
+class TbControleNaturezaDespesa
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo_operacao", type="string", length=45, nullable=true)
+     */
+    private $tipoOperacao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valor", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $valor;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_registro", type="datetime", nullable=true)
+     */
+    private $dataRegistro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="anexo", type="string", length=255, nullable=true)
+     */
+    private $anexo;
+
+    /**
+     * @var \TbNaturezaDespesa
+     *
+     * @ORM\ManyToOne(targetEntity="TbNaturezaDespesa")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tb_natureza_despesa_id", referencedColumnName="id")
+     * })
+     */
+    private $tbNaturezaDespesa;
+
+
+}
+

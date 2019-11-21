@@ -1,0 +1,58 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbDiariasControle
+ *
+ * @ORM\Table(name="tb_controle_numeracao_os")
+ * @ORM\Entity
+ */
+class ControleNumeracaoOs
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero", type="string", nullable=true)
+     */
+    private $numero;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="ano", type="string", nullable=true)
+     */
+    private $ano;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="unidade", type="integer", nullable=true)
+     */
+    private $unidade;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    
+}

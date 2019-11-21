@@ -1,0 +1,82 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbCirculoHierarquico
+ *
+ * @ORM\Table(name="tb_circulo_hierarquico")
+ * @ORM\Entity
+ */
+class TbCirculoHierarquico
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome_circulo_hierarquico", type="string", length=45, nullable=true)
+     */
+    private $nomeCirculoHierarquico;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sigla", type="string", length=255, nullable=false)
+     */
+    private $sigla;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="diaria_normal", type="decimal", precision=7, scale=2, nullable=true)
+     */
+    private $diariaNormal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="meia_diaria", type="decimal", precision=7, scale=2, nullable=true)
+     */
+    private $meiaDiaria;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="noventa", type="decimal", precision=7, scale=2, nullable=true)
+     */
+    private $noventa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="oitenta", type="decimal", precision=7, scale=2, nullable=true)
+     */
+    private $oitenta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="setenta", type="decimal", precision=7, scale=2, nullable=true)
+     */
+    private $setenta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cinquenta", type="decimal", precision=7, scale=2, nullable=true)
+     */
+    private $cinquenta;
+
+
+}
+

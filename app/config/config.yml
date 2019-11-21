@@ -1,0 +1,461 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: external/fos.yml }
+    - { resource: external/sonata.yml }
+
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: pt_BR
+    
+sonata_core:
+    flashmessage:
+        success:
+            types:
+                - { type: mytodo_success, domain: AppBundle }            
+
+sonata_intl:
+    timezone:
+        default: America/Sao_Paulo
+           
+               
+framework:
+    #esi:             ~
+    translator:      { fallbacks: "%locale%" }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  ~
+    fragments:       ~
+    http_method_override: true
+
+# Twig Configuration
+twig:
+    date:
+        timezone: America/Sao_Paulo
+        format: d.m.Y, H:i:s
+        
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    form: 
+        resources:
+            - 'SonataCoreBundle:Form:datepicker.html.twig'
+            - 'SonataCoreBundle:Form:colorpicker.html.twig'
+    form_themes:
+        # other form themes
+        - 'VichUploaderBundle:Form:fields.html.twig'
+# Doctrine Configuration
+doctrine:
+    
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver:   pdo_mysql
+                host:     '%database_host%'
+                port:     '%database_port%'
+                dbname:   '%database_name%'
+                user:     '%database_user%'
+                password: '%database_password%'
+                charset:  UTF8
+                
+        types:
+            json: Sonata\Doctrine\Types\JsonType
+                    
+    
+    
+    
+    
+    orm:
+        
+        entity_managers:
+            default:
+                connection: default
+                mappings:
+                    AppBundle: ~
+                
+                
+                auto_mapping: true                
+                dql:
+                    string_functions:
+                        YEAR: DoctrineExtensions\Query\Mysql\Year  
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+
+sonata_block:
+    blocks:
+        sonata.block.service.filter:
+            exception: { renderer: inline }
+
+          
+            
+            
+vich_uploader:
+    db_driver: orm 
+    
+    mappings:
+        product_image:
+            uri_prefix:         /uploads/media/empenhos
+            upload_destination: %kernel.root_dir%/../web/uploads/media/empenhos
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+            
+sonata_admin:
+    security:
+        handler: sonata.admin.security.handler.role
+
+    dashboard:
+        groups:
+            sonata.admin.group.efetivo:
+                keep_open:            false
+                label:                Efetivo
+                icon:                 '<i class="fa fa-users"></i>'
+                items:
+                    - admin_usuario
+                    - admin_quadro
+                    - admin_hierarquia
+                    - admin_posto_graduacao
+                    - sonata.user.admin.user
+                    - sonata.user.admin.group
+                    
+            sonata.admin.group.cenipa:
+                keep_open:            false
+                label:                CENIPA
+                icon:                 '<i class="fa fa-institution"></i>'
+                items:
+                    - admin_dfa
+                    - admin_dpg
+                    - admin_dop
+                    - admin_gestor_passagem_cenipa
+                    - admin_gestor_passagem_cenipa1
+                    - admin_gestor_passagem_cenipa2
+                    - admin_gestor_passagem_cenipa3
+                    - admin_gestor_passagem_cenipa4
+                    - admin_gestor_passagem_cenipa5
+                    - admin_gestor_passagem_cenipa6
+                    - admin_gestor_passagem_cenipa7
+                    - admin_acompanhamento_cenipa
+                    - admin_arquivo_cenipa
+                    - admin_gestor_exterior
+            
+            sonata.admin.group.ordenador:
+                keep_open:            false
+                label:                Ordenador de Despesas
+                icon:                 '<i class="fa fa-money"></i>'
+                items:
+                    - admin_ordenador_despesas
+                    - admin_ordenador_despesas1
+                    - admin_ordenador_despesas2
+                    - admin_ordenador_despesas3
+                    - admin_ordenador_despesas4
+                    - admin_ordenador_despesas5
+                    - admin_ordenador_despesas6
+                    - admin_ordenador_despesas7
+                   
+  
+            sonata.admin.group.seripa1:
+                keep_open:            false
+                label:                SERIPA 1
+                icon:                 '<i class="fa fa-home"></i>'
+                items:
+                    - admin_seripa1
+                    - admin_sec_seripa1
+                    - admin_acompanhamento_gestor_seripa1
+                    - admin_arquivo_seripa1
+                
+            sonata.admin.group.seripa2:
+                keep_open:            false
+                label:                SERIPA 2
+                icon:                 '<i class="fa fa-home"></i>'
+                items:
+                    - admin_seripa2
+                    - admin_sec_seripa2
+                    - admin_acompanhamento_gestor_seripa2
+                    - admin_arquivo_seripa2
+            
+            sonata.admin.group.seripa3:
+                keep_open:            false
+                label:                SERIPA 3
+                icon:                 '<i class="fa fa-home"></i>'
+                items:
+                    - admin_seripa3
+                    - admin_sec_seripa3
+                    - admin_acompanhamento_gestor_seripa3
+                    - admin_arquivo_seripa3
+            
+            sonata.admin.group.seripa4:
+                keep_open:            false
+                label:                SERIPA 4
+                icon:                 '<i class="fa fa-home"></i>'
+                items:
+                    - admin_seripa4
+                    - admin_sec_seripa4
+                    - admin_acompanhamento_gestor_seripa4
+                    - admin_arquivo_seripa4
+                    
+            sonata.admin.group.seripa5:
+                keep_open:            false
+                label:                SERIPA 5
+                icon:                 '<i class="fa fa-home"></i>'
+                items:
+                    - admin_seripa5				
+                    - admin_sec_seripa5
+                    - admin_acompanhamento_gestor_seripa5
+                    - admin_arquivo_seripa5
+            
+            sonata.admin.group.seripa6:
+                keep_open:            false
+                label:                SERIPA 6
+                icon:                 '<i class="fa fa-home"></i>'
+                items:
+                    - admin_seripa6
+                    - admin_sec_seripa6
+                    - admin_acompanhamento_gestor_seripa6
+                    - admin_arquivo_seripa6
+            
+            sonata.admin.group.seripa7:
+                keep_open:            false
+                label:                SERIPA 7
+                icon:                 '<i class="fa fa-home"></i>'
+                items:
+                    - admin_seripa7
+                    - admin_sec_seripa7
+                    - admin_acompanhamento_gestor_seripa7
+                    - admin_arquivo_seripa7
+            
+            sonata.admin.group.despesas:
+                keep_open:            false
+                label:                Controle de Despesas
+                icon:                 '<i class="fa fa-eye"></i>'
+                items:
+                    - admin_orcamento
+                    - admin_ordem_servico_passagem_despesa
+                    - admin_ordem_servico_despesa
+                    - admin_natureza_despesa
+                    - admin_natureza_despesa1
+                    - admin_natureza_despesa2
+                    - admin_natureza_despesa3
+                    - admin_natureza_despesa4
+                    - admin_natureza_despesa5
+                    - admin_natureza_despesa6
+                    - admin_natureza_despesa7
+                    - descentralizacao_unidade                                  
+                    - admin_controle_diarias
+                    
+            sonata.admin.group.taxonomias:
+                keep_open:            false
+                label:                Taxonomias
+                icon:                 '<i class="fa fa-archive"></i>'
+                items:
+                    - admin_aerodromo
+                    - admin_cidade
+                    - admin_uf
+                    - admin_natureza_missao
+                    - admin_taxonomia_natureza_despesa
+                    - admin_setor_divisao
+                    - admin_divisao
+                    - admin_unidade
+                    
+            
+    title:                'ATENAS'
+    title_logo: /bundles/sonataadmin/logo.png
+    options:
+        html5_validate:       true
+
+        
+        confirm_exit:         true
+        use_select2:          true
+        use_icheck:           true
+       
+        pager_links:          1
+        form_type:            standard
+        dropdown_number_groups_per_colums:  2
+        title_mode:           single_text
+        
+        
+    
+    templates:
+        list:                       SonataAdminBundle:CRUD:list.html.twig
+        action:                     SonataAdminBundle:CRUD:action.html.twig
+        select:                     SonataAdminBundle:CRUD:list__select.html.twig
+        list_block:                 SonataAdminBundle:Block:block_admin_list.html.twig
+        short_object_description:   SonataAdminBundle:Helper:short-object-description.html.twig
+        batch:                      SonataAdminBundle:CRUD:list__batch.html.twig
+        inner_list_row:             SonataAdminBundle:CRUD:list_inner_row.html.twig
+        base_list_field:            SonataAdminBundle:CRUD:base_list_field.html.twig
+        pager_links:                SonataAdminBundle:Pager:links.html.twig
+        pager_results:              SonataAdminBundle:Pager:results.html.twig
+        dashboard: SonataAdminBundle:Core:dashboard.html.twig
+        
+   
+    dashboard:
+        groups:
+        
+           
+                
+            
+
+            
+   
+    templates:
+        user_block:           'SonataAdminBundle:Core:user_block.html.twig'
+        add_block:            'SonataAdminBundle:Core:add_block.html.twig'
+        layout:               'SonataAdminBundle::standard_layout.html.twig'
+        ajax:                 'SonataAdminBundle::ajax_layout.html.twig'
+        dashboard:            'SonataAdminBundle:Core:dashboard.html.twig'
+        search:               'SonataAdminBundle:Core:search.html.twig'
+        list:                 'SonataAdminBundle:CRUD:list.html.twig'
+        filter:               'SonataAdminBundle:Form:filter_admin_fields.html.twig'
+        show:                 'SonataAdminBundle:CRUD:show.html.twig'
+        show_compare:         'SonataAdminBundle:CRUD:show_compare.html.twig'
+        edit:                 'SonataAdminBundle:CRUD:edit.html.twig'
+        preview:              'SonataAdminBundle:CRUD:preview.html.twig'
+        history:              'SonataAdminBundle:CRUD:history.html.twig'
+        acl:                  'SonataAdminBundle:CRUD:acl.html.twig'
+        history_revision_timestamp:  'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig'
+        action:               'SonataAdminBundle:CRUD:action.html.twig'
+        select:               'SonataAdminBundle:CRUD:list__select.html.twig'
+        list_block:           'SonataAdminBundle:Block:block_admin_list.html.twig'
+        search_result_block:  'SonataAdminBundle:Block:block_search_result.html.twig'
+        short_object_description:  'SonataAdminBundle:Helper:short-object-description.html.twig'
+        delete:               'SonataAdminBundle:CRUD:delete.html.twig'
+        batch:                'SonataAdminBundle:CRUD:list__batch.html.twig'
+        batch_confirmation:   'SonataAdminBundle:CRUD:batch_confirmation.html.twig'
+        inner_list_row:       'SonataAdminBundle:CRUD:list_inner_row.html.twig'
+        outer_list_rows_mosaic:  'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig'
+        outer_list_rows_list:  'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig'
+        outer_list_rows_tree:  'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig'
+        base_list_field:      'SonataAdminBundle:CRUD:base_list_field.html.twig'
+        pager_links:          'SonataAdminBundle:Pager:links.html.twig'
+        pager_results:        'SonataAdminBundle:Pager:results.html.twig'
+        tab_menu_template:    'SonataAdminBundle:Core:tab_menu_template.html.twig'
+        knp_menu_template:    'SonataAdminBundle:Menu:sonata_menu.html.twig'
+        customlist:        'SonataAdminBundle:CRUD:customlist.html.twig'
+    
+    
+    
+sonata_user:
+    security_acl: false
+   
+    profile:
+            
+        # Profile show page is a dashboard as in SonataAdminBundle
+        dashboard:
+            blocks:
+                - { position: left, type: sonata.block.service.text, settings: { content: "<h2>Welcome!</h2> This is a sample user profile dashboard, feel free to override it in the configuration! Want to make this text dynamic? For instance display the user's name? Create a dedicated block and edit the configuration!"} }
+                - { position: left, type: sonata.order.block.recent_orders, settings: { title: Recent Orders, number: 5, mode: public }}
+                - { position: right, type: sonata.timeline.block.timeline, settings: { max_per_page: 15 }}
+                - { position: right, type: sonata.news.block.recent_posts, settings: { title: Recent Posts, number: 5, mode: public }}
+                - { position: right, type: sonata.news.block.recent_comments, settings: { title: Recent Comments, number: 5, mode: public }}
+       
+            
+
+                
+
+
+        # Customize user portal menu by setting links
+        menu:
+            - { route: 'sonata_user_profile_show', label: 'sonata_profile_title', domain: 'SonataUserBundle'}
+            - { route: 'sonata_user_profile_edit', label: 'link_edit_profile', domain: 'SonataUserBundle'}
+            - { route: 'sonata_customer_addresses', label: 'link_list_addresses', domain: 'SonataCustomerBundle'}
+            - { route: 'sonata_user_profile_edit_authentication', label: 'link_edit_authentication', domain: 'SonataUserBundle'}
+            - { route: 'sonata_order_index', label: 'order_list', domain: 'SonataOrderBundle'}
+
+sonata_doctrine_orm_admin:
+    # default value is null, so doctrine uses the value defined in the configuration
+    entity_manager: ~
+
+    audit:
+        force: true
+        
+    
+    templates:
+        form:
+            - SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig
+        filter:
+            - SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig
+        types:
+            list:
+                array:      SonataAdminBundle:CRUD:list_array.html.twig
+                boolean:    SonataAdminBundle:CRUD:list_boolean.html.twig
+                date:       SonataAdminBundle:CRUD:list_date.html.twig
+                time:       SonataAdminBundle:CRUD:list_time.html.twig
+                datetime:   SonataAdminBundle:CRUD:list_datetime.html.twig
+                text:       SonataAdminBundle:CRUD:base_list_field.html.twig
+                trans:      SonataAdminBundle:CRUD:list_trans.html.twig
+                string:     SonataAdminBundle:CRUD:base_list_field.html.twig
+                smallint:   SonataAdminBundle:CRUD:base_list_field.html.twig
+                bigint:     SonataAdminBundle:CRUD:base_list_field.html.twig
+                integer:    SonataAdminBundle:CRUD:base_list_field.html.twig
+                decimal:    SonataAdminBundle:CRUD:base_list_field.html.twig
+                identifier: SonataAdminBundle:CRUD:base_list_field.html.twig
+                currency:   SonataAdminBundle:CRUD:list_currency.html.twig
+                percent:    SonataAdminBundle:CRUD:list_percent.html.twig
+                choice:     SonataAdminBundle:CRUD:list_choice.html.twig
+                url:        SonataAdminBundle:CRUD:list_url.html.twig
+
+            show:
+                array:      SonataAdminBundle:CRUD:show_array.html.twig
+                boolean:    SonataAdminBundle:CRUD:show_boolean.html.twig
+                date:       SonataAdminBundle:CRUD:show_date.html.twig
+                time:       SonataAdminBundle:CRUD:show_time.html.twig
+                datetime:   SonataAdminBundle:CRUD:show_datetime.html.twig
+                text:       SonataAdminBundle:CRUD:base_show_field.html.twig
+                trans:      SonataAdminBundle:CRUD:show_trans.html.twig
+                string:     SonataAdminBundle:CRUD:base_show_field.html.twig
+                smallint:   SonataAdminBundle:CRUD:base_show_field.html.twig
+                bigint:     SonataAdminBundle:CRUD:base_show_field.html.twig
+                integer:    SonataAdminBundle:CRUD:base_show_field.html.twig
+                decimal:    SonataAdminBundle:CRUD:base_show_field.html.twig
+                currency:   SonataAdminBundle:CRUD:base_currency.html.twig
+                percent:    SonataAdminBundle:CRUD:base_percent.html.twig
+                choice:     SonataAdminBundle:CRUD:show_choice.html.twig
+                url:        SonataAdminBundle:CRUD:show_url.html.twig
+
+
+                
+    
+knp_snappy:
+ 
+   pdf:
+ 
+       enabled:    true
+ 
+       binary:     /usr/local/bin/wkhtmltopdf
+ 
+       options:    []
+ 
+   image:
+ 
+       enabled:    true
+ 
+       binary:     /var/www/sonata3atenas/sonata/vendor/wkhtmltox/bin/wkhtmltopdf
+ 
+       options:    []
+       
+     
+

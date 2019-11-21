@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbUnidade
+ *
+ * @ORM\Table(name="tb_unidade")
+ * @ORM\Entity
+ */
+class TbUnidade
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome_unidade", type="string", length=45, nullable=true)
+     */
+    private $nomeUnidade;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="endereco", type="string", length=45, nullable=true)
+     */
+    private $endereco;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefone", type="string", length=45, nullable=true)
+     */
+    private $telefone;
+
+
+}
+

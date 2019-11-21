@@ -1,0 +1,28 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+	{% if object.numeroOrdemServico == '' %}
+	
+	<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> S/N<br>
+	
+	<i class="fa fa-user" aria-hidden="true"></i> {{object.tbUsuario }}<br>
+
+	<i class="fa fa-money" aria-hidden="true"></i> {{object.tbUsuario.getTotalAno }} diárias executadas no ano.<br>
+
+	
+	
+	{% else %}
+	
+	<i class="fa fa fa-tag" aria-hidden="true"></i> {{object.numeroOrdemServico }}<br>
+	
+	<i class="fa fa-user" aria-hidden="true"></i> {{object.tbUsuario }}<br>
+
+	<i class="fa fa-money" aria-hidden="true"></i> {{object.tbUsuario.getTotalAno }} diárias executadas no ano.<br>
+
+	
+	{% endif %}
+	
+    </div>
+    
+{% endblock %}

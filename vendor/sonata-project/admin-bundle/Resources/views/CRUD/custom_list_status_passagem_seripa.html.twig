@@ -1,0 +1,30 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+	{% if object.statusPassagem == 0%}
+	<span class="label label-default">Pedido de passagem não solicitado/cancelado</span>
+	
+	{% elseif object.statusPassagem == 1%}
+	
+	<span class="label label-info">Pedido de passagem solicitada pelo usuário, mas pendente de envio ao CENIPA</span>
+	
+	{% elseif object.statusPassagem == 2 %}
+	
+	<span class="label label-warning">Passagem pendente de autorização do CENIPA</span>
+	
+	{% elseif object.statusPassagem == 3 %}
+	
+	<span class="label label-warning">Passagem autorizada pelo CENIPA</span>
+	
+	{% elseif object.statusPassagem == 4 %}
+	
+	<span class="label label-primary">Passagem em emissão</span>
+	
+	{% elseif object.statusPassagem == 5 %}
+	
+	<span class="label label-success">Passagem emitida ao militar/civil</span>	
+	
+	
+	{% endif %}
+{% endblock %}

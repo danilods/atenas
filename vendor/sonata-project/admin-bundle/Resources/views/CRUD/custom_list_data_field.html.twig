@@ -1,0 +1,10 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+	
+	<i class="fa fa-calendar" aria-hidden="true"></i> {{ object.cadastroEm|date("m/d/Y") }}
+	
+	
+    </div>
+{% endblock %}

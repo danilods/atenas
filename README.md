@@ -1,3 +1,12 @@
+Projeto ATENAS - Centro de Investigação e Prevenção de Acidentes Aeronáuticos
+
+Projeto que teve como escopo o desenvolvimento de ferramenta de controle de gastos envolvendo atividades de custeio do Centro de Investigação e Prevenção de Acidentes Aeronáuticos e os Serviços Regionais de Investigação e Prevenção de Acidentes Aeronáuticos.
+ - algumas funcionalidades: 
+  - Cálculo de diárias e passagens, de acordo com o tipo de natureza de despesa;
+  - Geração de relatórios internos para trâmites processuais;
+  - Calculo orçamentário em tempo real dos débitos relacionados aos custos com diárias e passagens, utilizando elasticsearch, kibana e Logstash;
+  - dentre outras funcionalidades;
+
 Symfony 2.8 + Sonata Admin 3.0 Boilerplate
 ================
 
